@@ -19,8 +19,6 @@ import datetime
 
 import login
 
-# pyinstaller --onefile --icon=app.ico scrapejobs.py
-
 class EasyApplyBot:
 
     MAX_APPLICATIONS = 3000
@@ -48,23 +46,11 @@ class EasyApplyBot:
         return options
 
     def start_linkedin(self,username,password):
-    #    self.browser.get("https://linkedin.com/uas/login")
-    #def login(driver): #, username, password):
         print("\nLogging in.....\n \nPlease wait :) \n ")
         self.browser.get("https://www.linkedin.com/uas/login")
         try:
-            # user_field = self.browser.find_element_by_class_name("input#username")
-            # user_field = self.browser.find_element_by_xpath('//*[@id="session_key-username"]')
             user_field = self.browser.find_element_by_id("username")
-            # user_field = search_user.find_element_by_xpath("//input").click()
-            # pw_field = self.browser.find_element_by_class_name("input#password")
             pw_field = self.browser.find_element_by_id("password")
-            # pw_field = search_pw.find_element_by_xpath("//input")
-            # pw_field = self.browser.find_element_by_xpath('//*[@id="session_password-password"]')
-            # search_login = self.browser.find_element_by_id("btn__primary--large from__button--floating")
-            # login_button = search_login.find_element_by_xpath("//button")
-            # login_button = self.browser.find_element_by_id("login-submit")
-            # login_button = self.browser.find_element_by_xpath('//*[@id="btn-primary"]')
             user_field.click()
             user_field.send_keys(username)
             user_field.send_keys(Keys.TAB)
@@ -73,7 +59,6 @@ class EasyApplyBot:
             pw_field.send_keys(password)
             pw_field.send_keys(Keys.ENTER)
             time.sleep(1)
-            # login_button.click()
         except TimeoutException:
             print("TimeoutException! Username/password field or login button not found on glassdoor.com")
 
@@ -102,8 +87,6 @@ class EasyApplyBot:
 
         self.position = position
         self.location = "&location=" + location
-        #self.resumeloctn = resumeloctn
-        #print(self.resumeloctn)
 
     def start_apply(self):
         self.fill_data()
@@ -124,14 +107,6 @@ class EasyApplyBot:
         self.browser, _ = self.next_jobs_page(jobs_per_page)
         
         print("\nLooking for jobs.. Please wait..\n")
-
-        # self.browser.find_element_by_class_name(
-        #     "jobs-search-dropdown__trigger-icon"
-        #     ).click()
-        #
-        # self.browser.find_element_by_class_name(
-        #     "jobs-search-dropdown__option"
-        #     ).click()
 
         while count_application < self.MAX_APPLICATIONS:
             # sleep to make sure everything loads, add random to make us look human.
@@ -159,9 +134,6 @@ class EasyApplyBot:
                 now = datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S')
                 temp ['timestamp'] = str(now)
                 temp ['url'] = ('https://www.linkedin.com'+job)
-
-
-
 
                 """
                 click button see more
@@ -346,108 +318,12 @@ class EasyApplyBot:
                     temp['job_description'] = None
                     # temp['company'] = None
                 
-                # # location
-                # try:
-                #     # temp['location'] = self.browser.find_element_by_xpath(
-                #     #     '//span[contains(text(),"Company Location")]/following::span'
-                #     #     ).text.strip()
-                #     temp['location'] = self.browser.find_element_by_xpath(
-                #         '/html/body/div[8]/div[3]/div/div[1]/div[1]/div/div[1]/div[1]/div[2]/div[1]/h3/span[3]/text()'
-                #         )
-                # except Exception as e:
-                #     print('Location Not Found:\n', e)
-                #     temp['location'] = None
-                #
-                # # post date
-                # try:
-                #     # temp['post date'] = self.browser.find_element_by_xpath(
-                #     #     '//span[contains(text(),"Posted Date")]/following::span'
-                #     #     ).text.strip()
-                #     temp['post date'] = self.browser.find_element_by_xpath(
-                #         '/html/body/div[8]/div[3]/div/div[1]/div[1]/div/div[1]/div[1]/div[2]/div[1]/p/span[2]'
-                #         ).text.strip()
-                # except:
-                #     temp['post date'] = None
-                #
-                # # no. of applicants
-                # try:
-                #     # temp['no. applicants']  = self.browser.find_element_by_xpath(
-                #     #     '//span[contains(text(),"Number of applicants")]/following::span'
-                #     #     ).text.strip()
-                #     temp['no. applicants']  = self.browser.find_element_by_xpath(
-                #         '/html/body/div[8]/div[3]/div/div[1]/div[1]/div/div[1]/div[1]/div[2]/div[1]/p/span[3]/span[2]'
-                #         ).text.strip()
-                # except:
-                #     temp['no. applicants'] = None
-                #
-                # # job details
-                # try:
-                #     temp['job description'] = self.browser.find_element_by_xpath(
-                #         '//div[@id="job-details"]'
-                #         ).text.strip().replace('\n', ', ')
-                # except:
-                #     temp['job description'] = None
-                #
-                # # seniority level
-                # try:
-                #     # temp['seniority'] = self.browser.find_element_by_xpath(
-                #     #     '//h3[contains(text(),"Seniority Level")]/following::*'
-                #     #     ).text.strip()
-                #     temp['seniority'] = self.browser.find_element_by_xpath(
-                #         '/html/body/div[8]/div[3]/div/div[1]/div[1]/div/div[1]/div[3]/article/div/div[2]/div[2]/div[1]/p'
-                #         ).text.strip()
-                # except:
-                #     temp['seniority'] = None
-                #
-                # Industry
-                # try:
-                #     temp['industry'] = self.browser.find_element_by_xpath(
-                #         '//h3[contains(text(),"Industry")]/following::*'
-                #         ).text.strip()
-                # except:
-                #     temp['industry'] = None
-                #
-                # # Employment Type
-                # try:
-                #     # temp['employment type'] = self.browser.find_element_by_xpath(
-                #     #     '//h3[contains(text(),"Employment Type")]/following::*'
-                #     #     ).text.strip()
-                #     temp['employment type'] = self.browser.find_element_by_xpath(
-                #         '/html/body/div[8]/div[3]/div/div[1]/div[1]/div/div[1]/div[3]/article/div/div[2]/div[2]/div[3]/p'
-                #         ).text.strip()
-                # except:
-                #     temp['employment type'] = None
-                #
-                # #Job Functions
-                # try:
-                #     temp['functions'] = self.browser.find_element_by_xpath(
-                #         '//h3[contains(text(),"Job Functions")]/following::*'
-                #         ).text.strip()
-                # except:
-                #     temp['functions'] = None
-
-                # company description
                 try:
                     temp['company description'] = self.browser.find_element_by_id(
                         'company-description-text'
                         ).text.strip()
                 except:
                     temp['company description'] = None
-
-                # # Skills
-                # try:
-                #     all_skills = self.browser.find_elements_by_xpath(
-                #         '/html/body/div[8]/div[3]/div/div[1]/div[1]/div/div[1]/div[3]/article/div/div[2]/div[1]/div[2]/div/ul/li'
-                #         )
-                #     skill_names = []
-                #     for i in all_skills:
-                #         skill_names.append(i.find_element_by_xpath('/span').text.strip())
-                #     temp['skills'] = skill_names
-                # except:
-                #     temp['skills'] = None
-
-
-
 
                 """
                 Write to file
