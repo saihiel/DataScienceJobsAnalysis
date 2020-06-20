@@ -13,7 +13,7 @@ The raw scrapped data can be seen in the 'output_new.csv' file.
 The three main sections I explored are: 
   * Skills: The most common skills amongst all applicants
   * Education: The level of education of the applicants
-  * Seniority (Experience): The level of experience of the applicants
+  * Seniority (Experience): The level of experience of the applicants  
 The reason I selected these three features is becuase I feel they together give a good understanding of the types of applicants that we are completing against. By analysing the **most common skills amongst data practitioners** I found skills that I didn't have that I could now work on developing. The education level helped me consider the infamous question **'Higher Education vs Experience'**. Seniority tells us the amount of experience that most people have when applying for different positons. This allows us to align **ourselves, depending on our level of seniority**, to applying for the jobs that give us the best chance of success.
 
 ### Skills Section
