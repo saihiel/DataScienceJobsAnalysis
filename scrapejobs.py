@@ -468,10 +468,10 @@ if __name__ == '__main__':
     # no gui
     if useGUI == False:
 
-        username = 'bakshisaihiel@gmail.com'
-        password = 'saihiels'
+        username = ''
+        password = ''
         language = 'en'
-        position = '(data science OR data analyst) NOT (software engineer OR software developer)'
+        position = 'data science OR data analyst'
         location = 'Greater Toronto Area Metropolitan Area'
 
     # print input
