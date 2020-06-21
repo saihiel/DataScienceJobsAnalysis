@@ -33,9 +33,20 @@ c = Counter(all_skills)
 print(f'Number of distinct skills: {len(c.keys())}\n')
 print('--'*25)
 print("10 Most common Skills")
+skills_x = []
+skills_freq = []
 for entry in c.most_common(10):
+	skills_x.append(entry[0])
+	skills_freq.append(int(entry[1]))
 	print(" Skill: {0:^20}\t Frequency: {1}".format(entry[0], entry[1]))
 print('--'*25)
+
+f, ax = plt.subplots()
+plt.bar(skills_x,skills_freq)
+plt.title('Most Common Technical Skills')
+plt.xlabel('Skills')
+plt.ylabel('Frequency')
+plt.show()
 
 counts = np.array(list(c.most_common()))
 print("\nNumber of Skills that appear exactly once: ",sum(counts[:,1]=='1'))
