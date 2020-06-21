@@ -6,7 +6,7 @@ While looking through countless jobs that are posted on LinkedIn on a daily basi
   * Conclusions drawn from analysis
 
 ## Web Scrapping LinkedIn Jobs
-Unfortunately, LinkedIn does not make scrapping their website a trivial task. They update their website layout often and common web-scrappers found online wont cut it, or will likely get your account blocked. So I decided to use a scrapper I found online as a starting point and rebuild my own web-scrapper using selenium. I included a few tricks such as random mouse movements and delays between scrapes to make our web-scrapping bot seem more human-like. Once, I had built the scrapper built I decided to look for the most relevant job postings related to 'Data Science' and 'Data Analysis'. However, with these broad search terms postings related to 'Data Engineering', 'Data Modeling' and 'Financial Analysis' were also included in the scrape.
+Unfortunately, LinkedIn does not make scrapping their website a trivial task. They update their website layout often and common web-scrappers found online wont cut it, or will likely get your account blocked. So I decided to use a scrapper I found online as a starting point ([reference:](https://github.com/nicolomantini/Linkedin-Job-Scraper)) and rebuilt it into my own web-scrapper with selenium. I included a few tricks such as random mouse movements and delays between scrapes to make our web-scrapping bot seem more human-like. Once, I had built the scrapper built I decided to look for the most relevant job postings related to 'Data Science' and 'Data Analysis'. However, with these broad search terms postings related to 'Data Engineering', 'Data Modeling' and 'Financial Analysis' were also included in the scrape.
 The raw scrapped data can be seen in the 'output_new.csv' file.
 
 ## Exploratory Analysis
@@ -21,3 +21,9 @@ The reason I selected these three features is becuase I feel they together give 
 I order to easily understand the most common skills amongst applicants I used a Word Cloud. This simple visually appealing representation exemplifies well the skills that most applicants proud themselves on. I will say that after aligning my skills on LinkedIn with the following skills (only the ones that I do really have), I have a *'Preferred Skills Badge'* on almost all the jobs I want to apply for. Now, I do not know how much of a difference this actually makes for employers, but I imagine it cannot hurt.
 
 **The most common skill I found was Microsoft Office.** To be very honest, this came as a bit of a surprise to me. I expected something like 'Python', or 'Data Analysis' to be one of the most common skills. But, since Microsoft Office was a skill that was contained by almost every applicant, it skewed my results a little. Hence, I decided to create two seperate Word Clouds, one with Microsoft Office and other common 'general' skills such as 'Management' or 'Programming' and another with more Data Related skills. The code contained in the 'exploratory_analysis.py' file can make this more clear, as well as, the Word Clouds shown below. 
+![General Skills](https://github.com/saihiel/DataScienceJobsAnalysis/blob/master/Word%20Clouds/General%20Skills.png)
+![DS Skills](https://github.com/saihiel/DataScienceJobsAnalysis/blob/master/Word%20Clouds/Specialized%20Skills.png)
+
+Additionally, a bar graph with the 10 most common technical skills from the *approximately 350+ scrapped postings*:
+![Technical Skills Bar Graph](https://github.com/saihiel/DataScienceJobsAnalysis/blob/master/Technical_Skills.png)
+
